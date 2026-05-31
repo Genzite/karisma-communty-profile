@@ -1,0 +1,157 @@
+<nav
+    class="fixed top-0 sm:top-5 w-full z-50 flex justify-center px-0 sm:px-4 pointer-events-none"
+>
+    <div
+        class="relative z-50 flex justify-between items-center bg-white/10 backdrop-blur-2xl w-full max-w-6xl h-16 sm:h-20 rounded-none sm:rounded-full border-b sm:border border-white/20 px-6 shadow-lg pointer-events-auto transition-all duration-300"
+    >
+        <a href="/" class="flex items-center gap-3 group">
+            <div class="">
+                <!-- LOGO -->
+            </div>
+            <span class="text-white font-bold text-lg sm:text-xl tracking-wide">
+                Karisma<span class="hidden sm:inline"> UAI</span>
+            </span>
+        </a>
+
+        <div
+            class="hidden md:flex items-center gap-8 text-gray-200 font-medium"
+        >
+            <a
+                href="#beranda"
+                class="hover:text-white hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.8)] transition-all"
+                >Beranda</a
+            >
+            <a
+                href="#tentang"
+                class="hover:text-white hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.8)] transition-all"
+                >Tentang Kami</a
+            >
+            <a
+                href="#program"
+                class="hover:text-white hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.8)] transition-all"
+                >Program</a
+            >
+        </div>
+
+        <div class="flex items-center gap-4">
+            <a
+                href="#gabung"
+                class="hidden md:block px-6 py-2 bg-purple-600 hover:bg-purple-500 text-white font-semibold rounded-full transition-all shadow-[0_0_15px_rgba(147,51,234,0.4)]"
+            >
+                Gabung
+            </a>
+
+            <!-- Tombol SVG milik Anda telah ditambahkan id="menu-toggle" -->
+            <button
+                id="menu-toggle"
+                class="ml-4 md:hidden text-white focus:outline-none transition-transform duration-300"
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-8 w-8"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                >
+                    <!-- Path diberi id="menu-icon-path" agar bisa diubah via JS -->
+                    <path
+                        id="menu-icon-path"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Hapus class pointer-events-auto yang bentrok di akhir baris -->
+    <div
+        id="mobile-menu"
+        class="fixed inset-0 bg-black/95 backdrop-blur-2xl h-screen w-full flex flex-col items-center justify-center gap-8 opacity-0 pointer-events-none transition-opacity duration-300 z-40"
+    >
+        <a
+            href="#beranda"
+            class="mobile-link text-3xl font-bold text-gray-400 hover:text-white transition-colors"
+            >Beranda</a
+        >
+        <a
+            href="#tentang"
+            class="mobile-link text-3xl font-bold text-gray-400 hover:text-white transition-colors"
+            >Tentang Kami</a
+        >
+        <a
+            href="#program"
+            class="mobile-link text-3xl font-bold text-gray-400 hover:text-white transition-colors"
+            >Program</a
+        >
+        <a
+            href="#kontak"
+            class="mobile-link text-3xl font-bold text-gray-400 hover:text-white transition-colors"
+            >Kontak</a
+        >
+
+        <a
+            href="#gabung"
+            class="mobile-link mt-6 px-10 py-4 bg-purple-600 text-white text-xl font-bold rounded-full shadow-[0_0_20px_rgba(147,51,234,0.6)] active:scale-95 transition-transform"
+        >
+            Mari Berkolaborasi
+        </a>
+    </div>
+</nav>
+
+<script>
+    // Gunakan astro:page-load agar script selalu berjalan meskipun pindah-pindah halaman
+    document.addEventListener("astro:page-load", () => {
+        const menuToggle = document.getElementById("menu-toggle");
+        const mobileMenu = document.getElementById("mobile-menu");
+        const menuIconPath = document.getElementById("menu-icon-path");
+        const mobileLinks = document.querySelectorAll(".mobile-link");
+
+        // Hentikan eksekusi jika salah satu elemen utama tidak ditemukan di halaman ini
+        if (!menuToggle || !mobileMenu || !menuIconPath) return;
+
+        let isMenuOpen = false;
+
+        // Path SVG untuk animasi
+        const iconHamburger = "M4 6h16M4 12h16m-7 6h7"; // Ikon bawaan Anda
+        const iconClose = "M6 18L18 6M6 6l12 12"; // Ikon X (Tutup)
+
+        function toggleMenu() {
+            isMenuOpen = !isMenuOpen;
+
+            if (isMenuOpen) {
+                mobileMenu.classList.remove("opacity-0", "pointer-events-none");
+                mobileMenu.classList.add("opacity-100", "pointer-events-auto");
+
+                // Ubah SVG menjadi tanda silang dan putar sedikit tombolnya
+                menuIconPath.setAttribute("d", iconClose);
+                menuToggle.classList.add("rotate-90");
+
+                document.body.style.overflow = "hidden";
+            } else {
+                mobileMenu.classList.remove(
+                    "opacity-100",
+                    "pointer-events-auto",
+                );
+                mobileMenu.classList.add("opacity-0", "pointer-events-none");
+
+                // Kembalikan SVG ke bentuk semula
+                menuIconPath.setAttribute("d", iconHamburger);
+                menuToggle.classList.remove("rotate-90");
+
+                document.body.style.overflow = "";
+            }
+        }
+
+        // Mendaftarkan event listener pada tombol hamburger
+        menuToggle.addEventListener("click", toggleMenu);
+
+        // Mendaftarkan event listener pada setiap link di dalam menu mobile
+        mobileLinks.forEach((link) => {
+            link.addEventListener("click", () => {
+                if (isMenuOpen) toggleMenu();
+            });
+        });
+    });
+</script>

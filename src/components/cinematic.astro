@@ -1,0 +1,70 @@
+<section
+    class="relative py-24 bg-black overflow-hidden border-t border-white/5"
+>
+    <!-- Ambient Background Glow (Warna Biru/Ungu agar sinematik) -->
+    <div
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-blue-900/20 rounded-full blur-[120px] pointer-events-none z-0"
+    >
+    </div>
+
+    <div class="relative z-10 container mx-auto px-4 sm:px-6 max-w-7xl">
+        <!-- Header Section -->
+        <div class="flex flex-col items-center text-center mb-16">
+            <span
+                class="px-4 py-1.5 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-300 text-xs font-bold tracking-widest uppercase mb-4 shadow-[inset_0_0_10px_rgba(59,130,246,0.1)] inline-block"
+            >
+                Karisma Cinematic
+            </span>
+            <h2
+                class="text-3xl md:text-5xl font-extrabold text-white tracking-tight mt-2"
+            >
+                Atmosfer <span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500"
+                    >Pergerakan Kami</span
+                >
+            </h2>
+            <p
+                class="text-gray-400 mt-4 max-w-2xl mx-auto text-sm md:text-base leading-relaxed"
+            >
+                Saksikan cuplikan perjalanan, dedikasi, dan cerita ukhuwah kami
+                dalam bingkai sinematik. Rasakan sendiri energi yang menyatukan
+                Universitas Al Azhar Indonesia.
+            </p>
+        </div>
+
+        <!-- Video Player Frame (Web3 Style) -->
+        <div class="relative w-full max-w-5xl mx-auto group">
+            <!-- Efek Cahaya Pendar (Glow) di belakang video yang akan membesar saat kursor mendekat -->
+            <div
+                class="absolute -inset-1 bg-gradient-to-r from-blue-600 via-purple-600 to-fuchsia-600 rounded-[2.5rem] blur-2xl opacity-20 group-hover:opacity-40 transition duration-1000 group-hover:duration-300 pointer-events-none"
+            >
+            </div>
+
+            <!-- Inner Glass Container (Bingkai Kaca) -->
+            <!-- p-2 sm:p-4 memberikan jarak antara kaca dan video, layaknya bingkai TV premium -->
+            <div
+                class="relative w-full aspect-video bg-zinc-900/40 rounded-[2rem] border border-white/10 p-2 sm:p-4 backdrop-blur-xl shadow-2xl"
+            >
+                <!-- Pembungkus iFrame dengan sudut melengkung sempurna -->
+                <div
+                    class="w-full h-full rounded-[1.5rem] overflow-hidden bg-black relative shadow-inner"
+                >
+                    <!-- 
+                        Ganti src YouTube di bawah ini dengan link video Anda.
+                        Formatnya: https://www.youtube.com/embed/ID_VIDEO_ANDA
+                        Parameter ?rel=0 mencegah YouTube merekomendasikan video channel lain setelah selesai
+                    -->
+                    <iframe
+                        class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-[1.02]"
+                        src="https://www.youtube.com/embed/LXb3EKWsInQ?rel=0&modestbranding=1"
+                        title="LDK Karisma UAI Cinematic Video"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen
+                    >
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

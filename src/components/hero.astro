@@ -1,0 +1,164 @@
+---
+import GradientText from "../components/gradientText.jsx";
+import DarkVeil from "../components/darkVeil.jsx";
+import LogoDirektorat from "../assets/logo-direktorat.png";
+import LogoUai from "../assets/logo-uai.png";
+import LogoYpia from "../assets/logo-ypia.png";
+---
+
+<section
+    class="relative w-full bg-black min-h-screen min-h-[100dvh] pt-28 pb-16 md:pt-0 flex z-10 items-center justify-center overflow-hidden"
+>
+    <!-- Layer WebGL -->
+    <div class="absolute inset-0 z-0 pointer-events-none">
+        <DarkVeil
+            client:only="react"
+            hueShift={0}
+            noiseIntensity={0}
+            scanlineIntensity={0}
+            speed={2.5}
+            scanlineFrequency={0}
+            warpAmount={0}
+        />
+    </div>
+
+    <div
+        class="relative z-20 container mx-auto px-4 flex flex-col justify-center items-center text-center"
+    >
+        <!-- PERBAIKAN 2: text-4xl sm:text-5xl md:text-8xl agar lebih responsif di layar HP kecil -->
+        <h1>
+            <GradientText
+                client:visible
+                colors={["#5227FF", "#e121db", "#7400ff"]}
+                animationSpeed={3}
+                className="font-extrabold text-4xl sm:text-5xl md:text-8xl drop-shadow-lg"
+            >
+                MERAJUT UKHUWAH
+            </GradientText>
+        </h1>
+
+        <h2 class="text-white font-bold mt-3 text-xl md:text-4xl tracking-wide">
+            Dalam Dakwah
+        </h2>
+
+        <p
+            class="mt-6 text-sm md:text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed"
+        >
+            Wadah kolaborasi inklusif mahasiswa Universitas Al Azhar Indonesia.
+            Bersama-sama membangun karakter, berbagi inspirasi, dan menciptakan
+            pergerakan positif di era digital.
+        </p>
+
+        <div
+            class="mt-10 flex flex-col sm:flex-row gap-4 justify-center items-center w-full px-4 sm:px-0"
+        >
+            <!-- PERBAIKAN 3: Class yang berantakan pada tombol sudah dirapikan -->
+            <a
+                href="#mulai"
+                class="w-full sm:w-auto px-10 py-3.5 bg-white/5 text-white font-semibold rounded-full backdrop-blur-md transition-all duration-300 active:scale-95 border-2 border-blue-500 hover:bg-blue-500"
+            >
+                Mulai
+            </a>
+            <a
+                href="#bergabung"
+                class="w-full sm:w-auto px-12 py-3.5 bg-purple-600 hover:bg-purple-500 text-white font-semibold rounded-full transition-all duration-300 shadow-[0_0_15px_rgba(147,51,234,0.4)] hover:shadow-[0_0_25px_rgba(147,51,234,0.6)] active:scale-95"
+            >
+                Bergabung
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Bagian Partner / Kolaborator -->
+<section
+    class="relative py-12 bg-black border-y border-white/5 flex flex-col gap-10 items-center overflow-hidden"
+>
+    <!-- Judul Seksi -->
+    <h3 class="text-gray-200 text-sm md:text-base font-semibold">
+        Didukung Oleh:
+    </h3>
+
+    <!-- Efek Pudar (Gradient Masking) di ujung Kiri dan Kanan -->
+
+    <!-- Kontainer Track Scrolling -->
+    <div
+        class="relative flex w-full h-10 md:w-1/2 mx-auto overflow-hidden group py-4"
+    >
+        <!-- Efek Pudar (Gradient Masking) Kiri dan Kanan -->
+        <div
+            class="absolute inset-y-0 left-0 w-16 sm:w-24 bg-linear-to-r from-black to-transparent z-10 pointer-events-none"
+        >
+        </div>
+        <div
+            class="absolute inset-y-0 right-0 w-16 sm:w-24 bg-linear-to-l from-black to-transparent z-10 pointer-events-none"
+        >
+        </div>
+
+        <!-- Baris Logo (Dibuat panjang dan dianimasikan bergeser ke kiri) -->
+        <div
+            class="flex gap-20 items-center w-max animate-infinite-scroll group-hover:[animation-play-state:paused]"
+        >
+            <!-- KELOMPOK LOGO 1 -->
+            <img
+                src={LogoDirektorat.src}
+                alt="Direktorat Kemahasiswaan"
+                class="h-10 sm:h-14 sm:w-auto scale-200 opacity-100"
+            />
+            <img
+                src={LogoUai.src}
+                alt="UAI"
+                class="h-10 sm:h-14 w-auto opacity-100"
+            />
+            <img
+                src={LogoYpia.src}
+                alt="YPIA"
+                class="h-10 sm:h-14 w-auto opacity-100"
+            />
+
+            <!-- KELOMPOK LOGO 2 (DUPLIKAT PERSIS DARI KELOMPOK 1) -->
+            <img
+                src={LogoDirektorat.src}
+                alt="Direktorat Kemahasiswaan"
+                class="h-10 sm:h-14 sm:w-auto scale-200 opacity-100"
+            />
+            <img
+                src={LogoUai.src}
+                alt="UAI"
+                class="h-10 sm:h-14 w-auto opacity-100"
+            />
+            <!-- Tambahkan class padding-right (pr-16 sm:pr-24) HANYA di gambar paling terakhir ini -->
+            <img
+                src={LogoYpia.src}
+                alt="YPIA"
+                class="h-10 sm:h-14 w-auto opacity-100"
+            />
+
+            <img
+                src={LogoDirektorat.src}
+                alt="Direktorat Kemahasiswaan"
+                class="h-10 sm:h-14 sm:w-auto scale-200 opacity-100"
+            />
+            <img
+                src={LogoUai.src}
+                alt="UAI"
+                class="h-10 sm:h-14 w-auto opacity-100"
+            />
+        </div>
+    </div>
+</section>
+
+<!-- CSS Kustom untuk Animasi Infinite Scroll -->
+<style>
+    @keyframes infinite-scroll {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-50%);
+        }
+    }
+
+    .animate-infinite-scroll {
+        animation: infinite-scroll 25s linear infinite;
+    }
+</style>

@@ -1,0 +1,42 @@
+---
+// src/components/Footer.astro
+---
+
+<footer class="py-16 bg-black border-t border-white/5">
+    <div
+        class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left"
+    >
+        <div class="flex flex-col items-center md:items-start">
+            <h4 class="text-white font-bold text-xl mb-4">LDK Karisma UAI</h4>
+            <p class="text-white/40 text-sm leading-relaxed max-w-xs">
+                Merajut ukhuwah dalam dakwah. Wadah kolaborasi inklusif bagi
+                seluruh mahasiswa Universitas Al Azhar Indonesia.
+            </p>
+        </div>
+
+        <div class="flex flex-col items-center md:items-start">
+            <h4
+                class="text-white font-bold text-sm uppercase tracking-widest mb-4"
+            >
+                Sekretariat
+            </h4>
+            <p class="text-white/40 text-sm leading-relaxed">
+                Universitas Al Azhar Indonesia<br />
+                Jl. Sisingamangaraja, Kebayoran Baru<br />
+                Jakarta Selatan, Indonesia
+            </p>
+        </div>
+
+        <div class="flex flex-col items-center md:items-start">
+            <h4
+                class="text-white font-bold text-sm uppercase tracking-widest mb-4"
+            >
+                Legal
+            </h4>
+            <p class="text-white/40 text-sm">
+                &copy; {new Date().getFullYear()} Karisma UAI.<br />
+                All rights reserved.
+            </p>
+        </div>
+    </div>
+</footer>
